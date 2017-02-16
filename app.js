@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var date = require('node-datetime');
 var util =require('util');
-
+var uuid = require('node-uuid');
 
 ////////////////////////Using Express framework///////////////////////////
 	var app = express();
@@ -59,14 +59,12 @@ var util =require('util');
 			                            req.on('data', function (data) {
 			                                // console.log("data is "+data);
 			                                body += data;
-			                                // Too much POST data, kill the connection!
-			                                // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
 			                                if (body.length > 1e6)
 			                                    req.connection.destroy();
 			                            });
 			                            req.on('end', function () {
+																			var id = uuid.v1();
 			                                var post = qs.parse(body);
-			                                // use post['blah'], etc.
 			                                console.log("util.inspect(post) is "+util.inspect(post));
 																			var name = post.name;
 																			console.log("name is "+name);
@@ -78,9 +76,17 @@ var util =require('util');
 																			console.log("locations is "+locations);
 																			var descriptions = post.descriptions;
 																			console.log("descriptions is "+descriptions);
-			                                // console.log("post.length is "+post.length);
-			                                // console.log("post.data is "+post.data);
-			                                // console.log("util.inspect(post.data) is "+util.inspect(post.data));
+///////////////////////////////////////////////INSERT DATA TO CASSANDRA///////////////////////////////////
+																						var query = "INSERT INTO sensor_type.sensors (id , descriptions , established , locations , name , type ) VALUES (:id,:descriptions,:established,:locations,:name,:type);";
+																						const params = { id: id , descriptions: descriptions , established: established , locations: locations , name: name , type: type };
+																						client.execute( query , params , { prepare: true } , function(err, result) {
+																							if(err){
+																								console.log('ERROR FIND!!! IS '+err);
+																							}else {
+																								console.log("Successfully !!");
+																							}
+																						});
+///////////////////////////////////////////////INSERT DATA TO CASSANDRA///////////////////////////////////
 
 			                            });
 			                        }
