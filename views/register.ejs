@@ -116,7 +116,7 @@
                         <li><a href="#level1_2">Level One</a>
                         </li>
                       </ul>
-                    </li>                  
+                    </li>
                     <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                   </ul>
                 </div>
@@ -261,62 +261,56 @@
                   <div class="x_panel">
                     <div class="x_title">
                       <h2><label>Sensor Form</label></h2>
-                      
+
                       <div class="clearfix"></div>
 
                     </div>
-                    <form action="#" method="POST">
-                      <div class="col-md-6 col-sm-12 col-xs-12 form-group has-feedback">
-                       <label>Name</label>
+                <form action="http://localhost:3000/" method="POST">
+                        <div class="col-md-6 col-sm-12 col-xs-12 form-group has-feedback">
+                         <label>Name</label>
+                         <input name="name" type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Sensor Name">
+                         <span class="fa fa-rss form-control-feedback left" aria-hidden="true"></span>
+                        </div>
 
-                       <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Sensor Name">
-                       <span class="fa fa-rss form-control-feedback left" aria-hidden="true"></span>
-                     </div>
+                         <div class="col-md-6 col-sm-12 col-xs-12 xdisplay_inputx form-group has-feedback ">
+                           <label>Established Date</label>
+                              <input name="established" type="text" class="form-control has-feedback-left" id="single_cal3" placeholder="First Name" aria-describedby="inputSuccess2Status3">
+                              <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                              <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                         </div>
 
-                     <div class="col-md-6 col-sm-12 col-xs-12 xdisplay_inputx form-group has-feedback ">
-                       <label>Established Date</label>
-                     <!--<fieldset>
-                      <div class="control-group">
-                        <div class="controls">-->
-                          <!--<div class="col-md-11 xdisplay_inputx form-group has-feedback">-->
-                          <input type="text" class="form-control has-feedback-left" id="single_cal3" placeholder="First Name" aria-describedby="inputSuccess2Status3">
-                          <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                          <span id="inputSuccess2Status3" class="sr-only">(success)</span>
-                          <!--</div>-->
-                       <!-- </div>
-                      </div>
-                    </fieldset>-->
-                  </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group ">
+                         <label>Type</label>
+                         <p style="padding: 5px;">
+                          <input type="checkbox" name="type" id="hobby1" value="Temperature" data-parsley-mincheck="2" required class="flat" /> Temperature
+                          <br />
+                          <input type="checkbox" name="type" id="hobby2" value="Humidity" class="flat" /> Humidity
+                          <br />
+                          <input type="checkbox" name="type" id="hobby3" value="Dust" class="flat" /> Dust
+                          <br />
+                        </div>
 
-                  <div class="col-md-12 col-sm-12 col-xs-12 form-group ">
-                   <label>Type</label>
-                   <p style="padding: 5px;">
-                    <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" required class="flat" /> Temperature
-                    <br />
+                        <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                          <label>Location</label>
+                        </div>
 
-                    <input type="checkbox" name="hobbies[]" id="hobby2" value="run" class="flat" /> Humidity
-                    <br />
-                    <input type="checkbox" name="hobbies[]" id="hobby3" value="run" class="flat" /> Dust
-                    <br />
-                  </div>
-                  <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-                    <label>Location</label> </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-group ">
-                      <select class="selectpicker show-tick"> 
-                        <option>Department of Computer Science</option>
-                        <option>Ketchup</option>
-                        <option>Relish</option>
-                      </select> 
-                    </div> 
-                    <div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 form-group ">
+                            <select name="locations" class="selectpicker show-tick">
+                              <option value="Department of Computer Science">Department of Computer Science</option>
+                              <option value="Ketchup">Ketchup</option>
+                              <option value="Relish">Relish</option>
+                            </select>
+                          </div>
+                        <div>
 
-<div>
-Show: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br />
-<div class="check-element animate-show-hide" ng-show="checked">
-  I show up when your checkbox is checked.
-</div></div>
+                        <div>
+                        Show: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br />
+                            <div class="check-element animate-show-hide" ng-show="checked">
+                              I show up when your checkbox is checked.
+                            </div>
+                        </div>
 
-<!--ng show-->>
+
                     <script type="text/javascript">
 
                       if('should check ngShow', function() {
@@ -330,21 +324,21 @@ Show: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br /
                     </script>
 
 
+                        <div class="col-md-6 col-sm-12 col-xs-12 form-group ">
+                          <br><label>Descriptions</label>
+                          <textarea name="descriptions" id="message" required="required" class="form-control"  data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                          data-parsley-validation-threshold="10"></textarea>
+                        </div>
 
-
-                    <div class="col-md-6 col-sm-12 col-xs-12 form-group ">
-                      <br><label>Descriptions</label>
-                      <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                      data-parsley-validation-threshold="10"></textarea>
-                    </div>
-
-
-                    <div class="x_content">
-
-                      <center><button class="btn btn-lg btn-default" type="button" data-placement="top" data-toggle="tooltip" data-original-title="Save"><i class="glyphicon glyphicon-floppy-saved"></i></button>
-                        <button class="btn btn-lg btn-danger" type="reset" data-placement="top" data-toggle="tooltip" data-original-title="Cancel"><i class="glyphicon glyphicon-floppy-remove"></i></button></center>
-                      </div> 
+                        <div class="x_content">
+                          <center>
+                            <button class="btn btn-lg btn-default" type="submit" data-placement="top" data-toggle="tooltip" data-original-title="Save"><i class="glyphicon glyphicon-floppy-saved"></i></button>
+                            <button class="btn btn-lg btn-danger" type="reset" data-placement="top" data-toggle="tooltip" data-original-title="Cancel"><i class="glyphicon glyphicon-floppy-remove"></i></button></center>
+                          </div>
                     </form>
+
+
+
                   </div>
                 </div>
               </div>
