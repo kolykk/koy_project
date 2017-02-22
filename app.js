@@ -72,13 +72,13 @@ var uuid = require('node-uuid');
 																			console.log("established is "+established);
 																			var type = post.type;
 																			console.log("type is "+type);
-																			var locations = post.locations;
-																			console.log("locations is "+locations);
+																			var location = post.location;
+																			console.log("location is "+location);
 																			var descriptions = post.descriptions;
 																			console.log("descriptions is "+descriptions);
 ///////////////////////////////////////////////INSERT DATA TO CASSANDRA///////////////////////////////////
-																						var query = "INSERT INTO sensor_type.sensors (id , descriptions , established , locations , name , type ) VALUES (:id,:descriptions,:established,:locations,:name,:type);";
-																						const params = { id: id , descriptions: descriptions , established: established , locations: locations , name: name , type: type };
+																						var query = "INSERT INTO Sensor (id , descriptions , established , location , name , type ) VALUES (:id,:descriptions,:established,:location,:name,:type);";
+																						const params = { id: id , descriptions: descriptions , established: established , location: location , name: name , type: type };
 																						client.execute( query , params , { prepare: true } , function(err, result) {
 																							if(err){
 																								console.log('ERROR FIND!!! IS '+err);
@@ -92,7 +92,16 @@ var uuid = require('node-uuid');
 			                        }
 
 			});
-////////////////////////////////END Get data by POST method/////////////////////////////////////////
+////////////////////////////////END Get data by POST method////////////////////////////////////////
+
+//////////select////////
+app.get('/', function (req, res) {
+
+var query = 'SELECT * FROM Sensor';
+client.execute(query,function(err, result) {
+  console.log('got user profile with info ' + result.rows[0].name);
+});
+   
 
 
 
@@ -115,6 +124,8 @@ app.use(function(req, res, next) {
 	err.status = 404;
 	next(err);
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
