@@ -2,9 +2,12 @@ var express = require('express');
 var router = express.Router();
 //var managetype = require('./managetype')
 
-/* GET home page. */
+//GET home page.
 router.get('/', function(req, res, next) {
-  res.render('register', { title: 'Express' });
+  res.render('home', { title: 'Express' });
 });
+
+
+
 
 module.exports = router;
