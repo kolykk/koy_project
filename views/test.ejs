@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+<table border="2">
+	<thead>
+		<tr>
+			<td>ID</td>
+			<td>NAME</td>
+			<td>DESCRIPTIONS</td>
+			<td>ESTABLISHED</td>
+		</td>
+	</thead>
+	<tbody>
+		<% for(var i=0; i<sensor.length; i++) { %>
+		<tr>
+		<td><%= sensor[i].s_id %></td>
+		<td><%= sensor[i].s_name %></td>
+		<td><%= sensor[i].s_descriptions %></td>
+		<td><%= sensor[i].s_established %></td>
+	
+		</tr>
+		<% } %>
+	</tbody>
+		
+</table>
+
+</head>
+<body>
+
+
+
+</form>
+</body>
+</html>

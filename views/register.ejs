@@ -82,7 +82,7 @@
           <div class="col-md-6 col-md-offset-1">
             <div class="tim-container" style="min-height: 700px;">
 
-              <form action='/' method="post">
+              <form action='/register' method="POST" name="">
 
                 <!-- buttons row -->
                 <div class="tim-row" id="buttons-row">
@@ -119,10 +119,10 @@
                  <div class="col-sm-10">
                    <div class="input-group">
                     <label class="checkbox checkbox-orange" for="checkbox3">
-                      <input type="checkbox" value="" id="checkbox3" data-toggle="checkbox" checked name='typet'>                     TEMPERATURE
+                      <input type="checkbox" value="temperature" id="checkbox3" data-toggle="checkbox" checked name='typet'>                     TEMPERATURE
                     </label>
                     <label class="checkbox checkbox-azure" for="checkbox2">
-                      <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox" checked name='typeh'>                     RELATIVE HUMIDITY 
+                      <input type="checkbox" value="humidity" id="checkbox2" data-toggle="checkbox" checked name='typeh'>                     RELATIVE HUMIDITY 
                     </label>
                     
                   </div> 
@@ -143,7 +143,7 @@
                <div class="col-sm-8" >
 
 
-                <select id="mySelect" class="selectpicker" name="location" data-width="auto" name='location' >
+                <select id="mySelect" class="selectpicker" name="location" data-width="auto" id="location">
 
                  <option value='' selected="selected">SELECT ONE..&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
 
@@ -166,7 +166,7 @@
 
            <div class="col-sm-8">
             <div class="input-group" >
-              <input class="datepicker form-control" style="background-color:#e6e6e6 " type="text" name='s_establish'/> 
+              <input class="datepicker form-control" style="background-color:#e6e6e6 " type="text" name='s_established'/> 
               <span style="background-color:
 
               #f2f2f2" class="input-group-addon"><i class="fa fa-calendar"></i></span>   
@@ -190,7 +190,7 @@
             START
           </div>
           <div class="col-sm-6">
-           <div class="input-group clockpicker" data-placement="right" data-align="top" data-autoclose="true" name='start'>
+           <div class="input-group clockpicker" data-placement="right" data-align="top" data-autoclose="true" name='start_time'>
             <input type="text" class="form-control" style="background-color:#e6e6e6" >
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-time"></span>
@@ -207,7 +207,7 @@
         </div>
         <div class="col-sm-6">
           <div class="input-group clockpicker" data-placement="right" data-align="top" data-autoclose="true">
-            <input type="text" class="form-control" style="background-color:#e6e6e6" name='finish'>
+            <input type="text" class="form-control" style="background-color:#e6e6e6" name='finish_time'>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-time"></span>
             </span>
@@ -229,7 +229,7 @@
 
        <div class="input-group">
 
-         <input style="background-color: #e6e6e6" type="text" value="" class="form-control" name='controlt'>
+         <input style="background-color: #e6e6e6" type="text" value="" class="form-control" name='control_temp'>
          <span style="background-color:
 
          #f2f2f2" class="input-group-addon"><i class="glyphicon glyphicon-fire"></i></span>
@@ -262,7 +262,7 @@
 
  <div class="input-group">
 
-   <input style="background-color: #e6e6e6" type="text" value="" class="form-control" name='controlh'>
+   <input style="background-color: #e6e6e6" type="text" value="" class="form-control" name='control_humid'>
    <span style="background-color:
 
    #f2f2f2" class="input-group-addon">
