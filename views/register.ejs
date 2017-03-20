@@ -8,7 +8,6 @@
   <title>Sensor System</title>
 
 
-
   <link href="assets2/bootstrap3/css/bootstrap.css" rel="stylesheet" />
   <link href="assets2/assets/css/ct-paper.css" rel="stylesheet"/>
   <link href="assets2/assets/css/demo.css" rel="stylesheet" />
@@ -25,6 +24,11 @@
 
 
   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<!-- modal-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
   
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -46,7 +50,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <h3>SENSOR SYSTEM</h3>
+      <h3><strong>SENSOR SYSTEM</strong></h3>
 
     </div>
 
@@ -65,188 +69,196 @@
   </div><!-- /.container-->
 </nav>         
 
-<div class="wrapper">        
+<div class="wrapper">   </div>     
+<div class="main">
+  <div class="section section-nude">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="fixed-section">
+            <ul>
 
-
-  <div class="main">
-    <div class="section section-nude">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="fixed-section">
-              <ul>
-
-              </ul>
-            </div>
+             <a href="/register">
+               <div class="col-sm-3 block-3-box wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                <br><br> <div class="block-3-box-icon">
+                <button class="btn btn-primary  btn-lg"><i class="fa fa-pencil" ></i>Registration</button>
+              </a>
+              <br><br> <a href="/manageinfo"> 
+              <button class="btn btn-primary  btn-lg"><i class="fa fa-list-alt" ></i>Informations</button></a> 
+              <br><br><a href="/transactions"> 
+              <button class="btn btn-primary  btn-lg"><i class="glyphicon glyphicon-transfer" ></i>Transactions</button></a>
+              
+            </ul>
           </div>
-          <div class="col-md-6 col-md-offset-1">
-            <div class="tim-container" style="min-height: 700px;">
+        </div>
+        <div class="col-md-6 col-md-offset-1">
+          <div class="tim-container" style="min-height: 700px;">
 
-              <form action='/register' method="POST" name="">
+            <form action='/register' method="POST" name="">
 
-                <!-- buttons row -->
-                <div class="tim-row" id="buttons-row">
-
-
-                  <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp SENSOR FORM</h3>
-
-                  <legend></legend>
+              <!-- buttons row -->
+              <div class="tim-row" id="buttons-row">
 
 
-                  <div class="row">
-                    <div class="col-sm-2" style="padding-top: 10px">
-                      NAME :
-                    </div>
+                <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp SENSOR FORM</h3>
+
+                <legend></legend>
 
 
-                    <div class="col-sm-10">
-                     <div class="input-group">
-                      <input style="background-color: #e6e6e6" type="text" value="" class="form-control" name='s_name'>
-                      <span style="background-color:
-
-                      #f2f2f2" class="input-group-addon"><i class="fa fa-rss"></i></span>
-                    </div> 
-                  </div>
-                </div>
-
-                <br> 
                 <div class="row">
                   <div class="col-sm-2" style="padding-top: 10px">
-                   TYPE :
-                 </div>
+                    NAME :
+                  </div>
 
 
-                 <div class="col-sm-10">
+                  <div class="col-sm-10">
                    <div class="input-group">
-                    <label class="checkbox checkbox-orange" for="checkbox3">
-                      <input type="checkbox" value="temperature" id="checkbox3" data-toggle="checkbox" checked name='typet'>                     TEMPERATURE
-                    </label>
-                    <label class="checkbox checkbox-azure" for="checkbox2">
-                      <input type="checkbox" value="humidity" id="checkbox2" data-toggle="checkbox" checked name='typeh'>                     RELATIVE HUMIDITY 
-                    </label>
-                    
+                    <input style="background-color: #e6e6e6" type="text" value="" class="form-control" name='s_name'>
+                    <span style="background-color:
+
+                    #f2f2f2" class="input-group-addon"><i class="fa fa-rss"></i></span>
                   </div> 
                 </div>
-
-
               </div>
 
-              <!-- end row -->
-              <!--Location-->
               <br> 
               <div class="row">
-                <div class="col-sm-4" style="padding-top: 10px">
-                 LOCATION :
+                <div class="col-sm-2" style="padding-top: 10px">
+                 TYPE :
                </div>
 
 
-               <div class="col-sm-8" >
+               <div class="col-sm-10">
+                 <div class="input-group">
+                  <label class="checkbox checkbox-orange" for="checkbox3">
+                    <input type="checkbox" value="temperature" id="checkbox3" data-toggle="checkbox" checked name='typet'>                     TEMPERATURE
+                  </label>
+                  <label class="checkbox checkbox-azure" for="checkbox2">
+                    <input type="checkbox" value="humidity" id="checkbox2" data-toggle="checkbox" checked name='typeh'>                     RELATIVE HUMIDITY 
+                  </label>
+
+                </div> 
+              </div>
 
 
-                <select id="mySelect" class="selectpicker" name="location" data-width="auto" id="location">
-
-                 <option value='' selected="selected">SELECT ONE..&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
-
-                 <option value="bedroom">BEDROOM&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp</option>
-                 <option value="Livingroom">LIVING ROOM&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp&nbsp</option>
-               </select>
-
-             </div>
-           </div>
-
-
-           <!-- establish date -->
-           <br> 
-           <div class="row">
-            <div class="col-sm-4" style="padding-top: 10px">
-
-             ESTABLISH DATE :
-           </div>
-
-
-           <div class="col-sm-8">
-            <div class="input-group" >
-              <input class="datepicker form-control" style="background-color:#e6e6e6 " type="text" name='s_established'/> 
-              <span style="background-color:
-
-              #f2f2f2" class="input-group-addon"><i class="fa fa-calendar"></i></span>   
             </div>
-          </div>
-        </div>
+
+            <!-- end row -->
+            <!--Location-->
+            <br> 
+            <div class="row">
+              <div class="col-sm-4" style="padding-top: 10px">
+               LOCATION :
+             </div>
 
 
+             <div class="col-sm-8" >
 
-        <!-- Duration -->
-        <br> 
-        <div class="row">
+
+              <select id="mySelect" class="selectpicker" name="location" data-width="auto" id="location">
+
+               <option value='' selected="selected">SELECT ONE..&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
+
+               <option value="Bedroom">BEDROOM&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp</option>
+               <option value="Living room">LIVING ROOM&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp&nbsp</option>
+             </select>
+
+           </div>
+         </div>
+
+
+         <!-- establish date -->
+         <br> 
+         <div class="row">
           <div class="col-sm-4" style="padding-top: 10px">
 
-            DURATION : 
-          </div>
+           ESTABLISH DATE :
+         </div>
 
 
+         <div class="col-sm-8">
+          <div class="input-group" >
+            <input class="datepicker form-control" style="background-color:#e6e6e6 " type="text" name='s_established'/> 
+            <span style="background-color:
 
-          <div class="col-sm-2" style="padding-top: 10px">
-            START
-          </div>
-          <div class="col-sm-6">
-           <div class="input-group clockpicker" data-placement="right" data-align="top" data-autoclose="true" name='start_time'>
-            <input type="text" class="form-control" style="background-color:#e6e6e6" >
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-time"></span>
-            </span>
+            #f2f2f2" class="input-group-addon"><i class="fa fa-calendar"></i></span>   
           </div>
         </div>
       </div>
-      <!-- -->
-      <div class="row" style="padding-top: 1px">
-        <div class="col-sm-4">    </div>
+
+
+
+      <!-- Duration -->
+      <br> 
+      <div class="row">
+        <div class="col-sm-4" style="padding-top: 10px">
+
+          DURATION : 
+        </div>
+
+
 
         <div class="col-sm-2" style="padding-top: 10px">
-          FINISH
+          START
         </div>
         <div class="col-sm-6">
-          <div class="input-group clockpicker" data-placement="right" data-align="top" data-autoclose="true">
-            <input type="text" class="form-control" style="background-color:#e6e6e6" name='finish_time'>
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-time"></span>
-            </span>
-          </div>
+         <div class="input-group clockpicker" data-placement="right" data-align="top" data-autoclose="true">
+          <input type="text" class="form-control" style="background-color:#e6e6e6" name='start_time'>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
         </div>
       </div>
+    </div>
+    <!-- -->
+    <div class="row" style="padding-top: 1px">
+      <div class="col-sm-4">    </div>
 
-      <!-- end duration -->
+      <div class="col-sm-2" style="padding-top: 10px">
+        FINISH
+      </div>
+      <div class="col-sm-6">
+        <div class="input-group clockpicker" data-placement="right" data-align="top" data-autoclose="true">
+          <input type="text" class="form-control" style="background-color:#e6e6e6" name='finish_time'>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- end duration -->
 
 
 
-      <!-- temperature control-->
+    <!-- temperature control-->
 
-      <br><div class="row">
-      <div class="col-sm-4">
-       TEMPERATURE CONTROL :
-     </div>
-     <div class="col-sm-8">
-
-       <div class="input-group">
-
-         <input style="background-color: #e6e6e6" type="text" value="" class="form-control" name='control_temp'>
-         <span style="background-color:
-
-         #f2f2f2" class="input-group-addon"><i class="glyphicon glyphicon-fire"></i></span>
-
-       </div> 
-     </div>
+    <br><div class="row">
+    <div class="col-sm-4">
+     TEMPERATURE CONTROL :
    </div>
+   <div class="col-sm-8">
+
+     <div class="input-group">
+
+       <input style="background-color: #e6e6e6" type="text" value="" class="form-control" name='control_temp'>
+       <span style="background-color:
+
+       #f2f2f2" class="input-group-addon"><i class="glyphicon glyphicon-fire"></i></span>
+
+     </div> 
+   </div>
+ </div>
 
 
-   <!-- temperature control description-->
+ <!-- temperature control description-->
 
-   <div class="row">
+ <div class="row">
    <div class="col-sm-4"></div>
 
    <div class="col-sm-8" >
 
-<font color="#e0e0eb">Example. 22.03 (Celsius :  &#176 C)</font>
+    <font color="#e0e0eb">Example. 22.03 (Celsius :  &#176 C)</font>
 
   </div>
 </div>
@@ -275,14 +287,14 @@
 
 <!-- humidity control description-->
 
-   <div class="row">
-   <div class="col-sm-4"></div>
+<div class="row">
+ <div class="col-sm-4"></div>
 
-   <div class="col-sm-8" >
+ <div class="col-sm-8" >
 
-<font color="#e0e0eb">Example. 60 (%) ratio of vapor to the equilibrium per vapor in the air. </font>
+  <font color="#e0e0eb">Example. 60 (%) ratio of vapor to the equilibrium per vapor in the air. </font>
 
-  </div>
+</div>
 </div>
 
 <!-- end relative humidity -->
@@ -306,10 +318,38 @@
 
 <div class="tim-row">
   <center>  
-    <button type="submit" class="btn btn-success ">SAVE</button>
-    <input type="reset" class="btn btn-warning" value="CANCEL">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">&nbsp SAVE &nbsp</button>
 
+    <input type="reset" class="btn btn-warning btn-lg" value="CANCEL">
   </center>
+
+
+<!-- modal -->
+<div class="container">
+ 
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Save Information</h4>
+        </div>
+       <div class="modal-body">
+          <center><font>Are you sure ?</font></center>
+        </div> 
+        <div class="modal-footer"><br>
+         <center>&nbsp<button type="submit" class="btn btn-default">  <i class="fa fa-check" aria-hidden="true"></i></button>
+
+
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button></center><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
 
@@ -359,6 +399,8 @@
 <script src="assets2/assets/js/ct-paper.js"></script>
 
 <script src="assets2/assets/js/bootstrap-clockpicker.min.js"></script>
+
+
 <script>
 
  $('#reset').click(function(){

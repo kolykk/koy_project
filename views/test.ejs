@@ -1,36 +1,27 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<html>
-<head>
-<table border="2">
-	<thead>
-		<tr>
-			<td>ID</td>
-			<td>NAME</td>
-			<td>DESCRIPTIONS</td>
-			<td>ESTABLISHED</td>
-		</td>
-	</thead>
-	<tbody>
-		<% for(var i=0; i<sensor.length; i++) { %>
-		<tr>
-		<td><%= sensor[i].s_id %></td>
-		<td><%= sensor[i].s_name %></td>
-		<td><%= sensor[i].s_descriptions %></td>
-		<td><%= sensor[i].s_established %></td>
-	
-		</tr>
-		<% } %>
-	</tbody>
-		
-</table>
-
-</head>
-<body>
+      <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                              
+                              <th>NAME</th>
+                              <th>Conhum</th>
+                              <th>Conmid</th>
+                              <th>start</th>
+                              <th>finish</th>
 
 
-
-</form>
-</body>
-</html>
+                            </td>
+                          </thead>
+                          <tbody style= "text-align:center;vertical-align:middle;">
+                            <% for(var i=0; i<detail.length; i++) { %>
+                            <tr>
+                         
+                              <td><%= detail[i].s_name %></td>
+                              <td><%= detail[i].control_humid %></td>
+                              <td><%= detail[i].control_temp %></td>
+                              <td><%= detail[i].start_time%></td>
+                              <td><%= detail[i].finish_time%></td>
+    
+                              </tr>
+                              <% } %>
+                            </tbody>
+                   
+                        </table>

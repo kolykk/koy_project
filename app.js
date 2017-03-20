@@ -11,7 +11,8 @@ var routes = require('./routes/server');
 var qs = require('querystring');
 var selectcassandra = require('./routes/selectcassandra');
 var insertcassandra= require('./routes/insertcassandra');
-//var insertlocation = require('./routes/insertlocation');
+
+
 ////////////////////////Using Express framework///////////////////////////
 var app = express();
 
@@ -37,12 +38,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',routes);
 app.use('/login',routes);
 
-
-app.get('/test',selectcassandra);
+app.use('/test',routes);
+app.get('/manageinfo',selectcassandra);
 app.use('/register',insertcassandra);
 
-/* app.use('/register',function(res,req,next){
+app.use('/transactions',routes);
+//app.use('/manageinfo',routes);
 
+/* app.use('/register',function(res,req,next){
 	app.use('/register',insertlocation);
 	next()
 	app.use('/register',insertsensor);
@@ -50,7 +53,6 @@ app.use('/register',insertcassandra);
 	res.render('/');
 	
 	});
-
 */
 
 

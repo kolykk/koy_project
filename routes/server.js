@@ -16,6 +16,14 @@ router.get('/login', function(req, res) {
 });
 
 
+router.get('/test',function(req,res){
+	res.render('test');
+});
+
+router.get('/transactions',function(req,res){
+	res.render('transactions');
+});
+
 
 
    
