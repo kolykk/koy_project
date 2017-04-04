@@ -8,10 +8,15 @@ var date = require('node-datetime');
 var util =require('util');
 var uuid = require('node-uuid');
 var routes = require('./routes/server');
+var ejsLint=require('ejs-lint/index.js');
 var qs = require('querystring');
 var selectcassandra = require('./routes/selectcassandra');
 var insertcassandra= require('./routes/insertcassandra');
-
+var editcassandra= require('./routes/editcassandra');
+const line =  require('node-line-bot-api');
+//var edit = require('./routes/edit');
+//var cors = require('cors');
+var selecttransaction = require('./routes/selecttransaction');
 
 ////////////////////////Using Express framework///////////////////////////
 var app = express();
@@ -41,9 +46,9 @@ app.use('/login',routes);
 app.use('/test',routes);
 app.get('/manageinfo',selectcassandra);
 app.use('/register',insertcassandra);
-
-app.use('/transactions',routes);
-//app.use('/manageinfo',routes);
+//app.use('/edit',edit);
+app.get('/transactions',selecttransaction);
+app.use('/manageinfo',routes);
 
 /* app.use('/register',function(res,req,next){
 	app.use('/register',insertlocation);
@@ -56,9 +61,69 @@ app.use('/transactions',routes);
 */
 
 
+///////////////////////Initialized Line BOT API//////////////////////
 
+/*
+line.init({
+  accessToken: 'CdDYlY9qqNN7g64umv6/8UFdJE2x44h+8n2IdV74kiEY8OIftb9SMwqjr9O4VzEFu7Xh/V/Fkh5fVpqiGuzntROv/PocnPGQXtrN5i0azudzHYxapZqVnTpfrQZF2IxwqkRvkZFGyQ3GWbBUs0H2BAdB04t89/1O/w1cDnyilFU=',
+  // (Optional) for webhook signature validation
+  channelSecret: 'd42dbcc257489b8600bd879c33ca3d44'
+})
+ console.log("Sending messages to Line API");
+ line.client.pushMessage({
 
+            to: 'Ubf06abaa5636d4204976ee3939dcab40',
+            messages:[
+                {
+                    "type":"text",
+                    "text":"Warning"
+                }
+            ]
+          })
 
+*/
+
+/*
+ app.get('/sensor',function(req, res, next) {
+                       console.log("Getting GET request");
+                       var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+                      //  console.log("full url is "+fullUrl);
+                      //  console.log("data is "+req.originalUrl);
+                       var data = req.originalUrl;
+                      //  console.log("data.substr is "+data.substr(0,12));
+                      //  console.log("data.indexOf is "+data.indexOf("?"));
+                      //  console.log("data.substr(8,data.length) is "+data.substr(8,data.length));
+                       var string = data.substr(8,data.length);
+                          //  var num_tem = string.length+1;
+                          //  string[num_tem] = '&';
+                          string += '&';
+                       var DataObject = new Array();
+                       var k=0;
+                       for (var i = 0 , len = string.length; i < len; i++) {
+                          // console.log("string["+i+"] is "+string[i]);
+                          if(string[i] == '='){
+
+                              var j=i+1;
+                              var data = '';
+                              while (string[j] != '&') {
+
+                                data += string[j];
+                                j++;
+
+                                if (j == string.length) {
+                                  return;
+                                }
+                              }
+                               	console.log("data is "+data);
+                                DataObject[k]=data;
+                                k++;
+                          }
+                       }
+
+                     
+                  });
+
+*/
 
 // catch 404 and forward to error handler
 /*app.use(function(req, res, next) {

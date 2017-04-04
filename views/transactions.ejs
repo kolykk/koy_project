@@ -25,6 +25,34 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link type="text/css" href="assets2/bootstrap3/css/bootstrap.min.css" />
+  <style>
+    .blink_text {
+
+      animation:1s blinker linear infinite;
+      -webkit-animation:1s blinker linear infinite;
+      -moz-animation:1s blinker linear infinite;
+
+      color: red;
+    }
+
+    @-moz-keyframes blinker {  
+     0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+   }
+
+   @-webkit-keyframes blinker {  
+     0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+   }
+
+   @keyframes blinker {  
+     0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+   }
+ </style>
 
 </head>
 
@@ -87,7 +115,7 @@
                     <div class="x_panel">
                       <div class="x_title">
 
-                        <h3><i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp INFORMATIONS</h3>
+                        <h3><i class="glyphicon glyphicon-transfer" aria-hidden="true"></i> &nbsp TRANSACTIONS</h3>
                         <legend></legend>
 
 
@@ -95,46 +123,50 @@
                       </div>
                       <div class="x_content">
                         <p class="text-muted font-13 m-b-30">
-                          ส่งค่า
+                          All Transactions send data to site.
                         </p>
 
                         <div class="box-body">
                          <div class="box-body">
                           <table id="example1" class="table table-bordered table-striped">
-                            
 
-                              <thead>
+
+                            <thead>
                               <tr>
                                 <th style="text-align:center;vertical-align:middle;">SENSOR ID</th>
-                                <th>SENSOR ID</th>
                                 <th>HUMIDITY VALUE</th>
                                 <th>TEMPERATURE VALUE</th>
                                 <th>CURRENT TIME</th>
-                               
-                              </td>
+
+                              </tr>
                             </thead>
                             <tbody style= "text-align:center;vertical-align:middle;">
-     
-                              <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                             <% for(var i=0; i<transactions.length; i++) { %>
+                             <tr>
+                               <td><%= transactions[i].s_id %></td>
+                               <td><%= transactions[i].s_humidvalue %></td>
+                               <td><%= transactions[i].s_temvalue%></td>
+                               <td><%= transactions[i].currenttime %></td>
+                             </tr>
+                             <% } %>
+                           </tbody>
 
+                            <!-- alert
+
+                            <td style='color:#FF0033'><span class="blink_text"><strong>ALERT!</strong></span></td> -->
 
                           </table>
 
-                        
-                          </div>
-                          <!-- Content Header (Page header) -->
+
                         </div>
+                        <!-- Content Header (Page header) -->
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
 
 
