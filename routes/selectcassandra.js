@@ -20,6 +20,7 @@ var getAlldetail = 'SELECT * FROM registration.detail';
 
 router.get('/manageinfo',function (req,res){
 
+	
 	client.execute(getAllsensor,[],function(err,result){
 		if(err){
 			res.status(404).send({msg: err});
@@ -42,6 +43,7 @@ router.get('/manageinfo',function (req,res){
 
 		}
 	});
+
 });
 
 

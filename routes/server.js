@@ -19,6 +19,9 @@ router.get('/test',function(req,res){
 	res.render('test');
 });
 
+router.get('/api',function(req,res){
+	res.render('api');
+});
 
 module.exports = router;
 

@@ -1,9 +1,6 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-
-
-
 var cassandra = require('cassandra-driver')
 var client = new cassandra.Client({contactPoints: ['127.0.0.1'] }); //connect cassandra
 
@@ -17,7 +14,7 @@ router.get('/', function(req, res) {
 });
 
 
-router.post('/',function(req,res){
+router.post('/manageinfo',function(req,res){
 id = cassandra.types.uuid();
 				var insertsensor = "INSERT INTO registration.sensor (s_id , s_descriptions , s_established , s_name,s_location) VALUES (?,?,?,?,?);"; //database
 	client.execute(insertsensor,[id , req.body.s_description, req.body.s_established, req.body.s_name, req.body.location],

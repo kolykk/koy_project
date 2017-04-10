@@ -13,9 +13,10 @@ var qs = require('querystring');
 var selectcassandra = require('./routes/selectcassandra');
 var insertcassandra= require('./routes/insertcassandra');
 var editcassandra= require('./routes/editcassandra');
+var showdetail= require('./routes/showdetail');
 const line =  require('node-line-bot-api');
 //var edit = require('./routes/edit');
-//var cors = require('cors');
+var cors = require('cors');
 var selecttransaction = require('./routes/selecttransaction');
 
 ////////////////////////Using Express framework///////////////////////////
@@ -49,6 +50,7 @@ app.use('/register',insertcassandra);
 //app.use('/edit',edit);
 app.get('/transactions',selecttransaction);
 app.use('/manageinfo',routes);
+app.get('/showdetail',showdetail);
 
 /* app.use('/register',function(res,req,next){
 	app.use('/register',insertlocation);
@@ -58,11 +60,22 @@ app.use('/manageinfo',routes);
 	res.render('/');
 	
 	});
-*/
+  */
+
+////////////////////// sensor /////////////////
+
+app.use(cors())
+
+app.post('/api/temp', function (req, res) {
+  console.log(req.query.temp)
+  res.send('success : ' + req.query.temp)
+})
+
+//////////////// end sensor /////////////////
 
 
-///////////////////////Initialized Line BOT API//////////////////////
 
+///////////////////////Line BOT API//////////////////////
 /*
 line.init({
   accessToken: 'CdDYlY9qqNN7g64umv6/8UFdJE2x44h+8n2IdV74kiEY8OIftb9SMwqjr9O4VzEFu7Xh/V/Fkh5fVpqiGuzntROv/PocnPGQXtrN5i0azudzHYxapZqVnTpfrQZF2IxwqkRvkZFGyQ3GWbBUs0H2BAdB04t89/1O/w1cDnyilFU=',
@@ -81,7 +94,7 @@ line.init({
             ]
           })
 
-*/
+          */
 
 /*
  app.get('/sensor',function(req, res, next) {
@@ -123,7 +136,7 @@ line.init({
                      
                   });
 
-*/
+                  */
 
 // catch 404 and forward to error handler
 /*app.use(function(req, res, next) {
