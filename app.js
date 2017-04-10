@@ -14,6 +14,7 @@ var selectcassandra = require('./routes/selectcassandra');
 var insertcassandra= require('./routes/insertcassandra');
 var editcassandra= require('./routes/editcassandra');
 var showdetail= require('./routes/showdetail');
+// var getdata = require('./routes/getdata');
 const line =  require('node-line-bot-api');
 //var edit = require('./routes/edit');
 var cors = require('cors');
@@ -58,7 +59,7 @@ app.get('/showdetail',showdetail);
 	app.use('/register',insertsensor);
 	next()
 	res.render('/');
-	
+
 	});
   */
 
@@ -133,7 +134,7 @@ line.init({
                           }
                        }
 
-                     
+
                   });
 
                   */
