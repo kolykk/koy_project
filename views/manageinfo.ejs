@@ -116,7 +116,7 @@
                                 <td>{{ sensor.s_location }}</td>
                                 <td>{{ sensor.s_descriptions }}</td>
                                 <td>
-                                    <button style="text-align:center;vertical-align:middle;" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal1" data-whatever >
+                                    <button style="text-align:center;vertical-align:middle;" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal1" data-whatever ng-click="open_details('lg' , sensor.s_id )">
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                                     </button>
                                 </td>
@@ -126,7 +126,7 @@
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                       </button>
 
-                                    <button style="text-align:center;vertical-align:middle;" class="btn btn-info btn-sm btn-simple" data-toggle="modal" data-target="#exampleModal1">
+                                    <button style="text-align:center;vertical-align:middle;" class="btn btn-info btn-sm btn-simple" data-toggle="modal" data-target="#exampleModal1" ng-click="open_delete('lg',sensor.s_id)">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
 
@@ -153,45 +153,44 @@
             <div class="container">
 
 
-
-              <!-- Modal -->
+              <!-- Modal EDIT-->
               <script type="text/ng-template" id="myModalContent.html">
               <div class="modal-header">
                         <h3 class="modal-title">EDIT</h3>
-                    </div>
+              </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" method="POST" action="update" role="form">
+                            <form class="form-horizontal" role="form">
                             <fieldset>
                                 <div class="form-group">
                                     <label class="col-sm-1 control-label" for="textinput">Sensor_id</label>
                                     <div class="col-sm-10">
-                                        <input id="firstname" type="text" placeholder="Address Line 1" class="form-control" ng-model="items.s_id" >
+                                        <input id="Sensor_id" type="text" name="s_id" placeholder="Address Line 1" class="form-control" ng-model="items.s_id" disabled>
                                     </div>
                                 </div>
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="col-sm-1 control-label" for="textinput">Name</label>
                                     <div class="col-sm-10">
-                                        <input id="lastname" type="text" placeholder="Address Line 2" class="form-control" ng-model="items.s_name">
+                                        <input id="name" type="text" name="s_name" placeholder="Address Line 2" class="form-control" ng-model="items.s_name">
                                     </div>
                                 </div>
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="col-sm-1 control-label" for="textinput">Established</label>
                                     <div class="col-sm-4">
-                                        <input id="email" type="text" placeholder="State" class="form-control" ng-model="items.s_established" >
+                                        <input id="established" type="text" name="s_established" placeholder="State" class="form-control" ng-model="items.s_established" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-1 control-label" for="textinput">Locations</label>
                                     <div class="col-sm-4">
-                                        <input id="email" type="text" placeholder="State" class="form-control" ng-model="items.s_location" >
+                                        <input id="locations" type="text" name="s_location" placeholder="State" class="form-control" ng-model="items.s_location" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-1 control-label" for="textinput">Descriptions</label>
                                     <div class="col-sm-4">
-                                        <input id="password" type="text" placeholder="State" class="form-control" ng-model="items.s_descriptions">
+                                        <input id="descriptions" type="text" name="s_descriptions" placeholder="State" class="form-control" ng-model="items.s_descriptions">
                                     </div>
                                 </div>
                                 <br><br><br>
@@ -208,6 +207,85 @@
                         </div>
               </script>
               <!-- END Modal -->
+
+              <!-- Modal DETAILS-->
+              <script type="text/ng-template" id="myModalContent_detail.html">
+              <div class="modal-header">
+                        <h3 class="modal-title">DETAILS</h3>
+              </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" method="POST" action="update" role="form">
+                            <fieldset>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label" for="textinput">sensor name</label>
+                                    <div class="col-sm-10">
+                                        <input id="name" type="text" name="s_name" placeholder="Address Line 2" class="form-control" ng-model="items.s_name">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label" for="textinput">start time</label>
+                                    <div class="col-sm-4">
+                                        <input id="established" type="text" name="s_established" placeholder="State" class="form-control" ng-model="items.start_time" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label" for="textinput">finish time</label>
+                                    <div class="col-sm-4">
+                                        <input id="locations" type="text" name="s_location" placeholder="State" class="form-control" ng-model="items.finish_time" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label" for="textinput">control temp</label>
+                                    <div class="col-sm-4">
+                                        <input id="descriptions" type="text" name="s_descriptions" placeholder="State" class="form-control" ng-model="items.control_temp">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label" for="textinput">control humidity</label>
+                                    <div class="col-sm-4">
+                                        <input id="descriptions" type="text" name="s_descriptions" placeholder="State" class="form-control" ng-model="items.control_humid">
+                                    </div>
+                                </div>
+                                <br><br><br>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="pull-right" style="padding-right: inherit;">
+                                                <button type="button" class="btn btn-primary" ng-click="ok()" >UPDATE</button>
+                                                <button type="button" class="btn btn-danger" ng-click="cancel()" >Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            </form>
+                        </div>
+              </script>
+              <!-- END Modal -->
+
+
+              <!-- Modal -->
+              <script type="text/ng-template" id="myModal.html">
+              <div class="modal-header">
+                        <h3 class="modal-title">DELETE</h3>
+                    </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" method="POST" action="update" role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="pull-right" style="padding-right: inherit;">
+                                                <button type="button" class="btn btn-primary" ng-click="delete()" >DELETE</button>
+                                                <button type="button" class="btn btn-danger" ng-click="cancel()" >Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            </form>
+                        </div>
+              </script>
+              <!-- END Modal -->
+
             </div>
 
           </div>

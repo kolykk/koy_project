@@ -19,7 +19,8 @@ const line =  require('node-line-bot-api');
 //var edit = require('./routes/edit');
 var cors = require('cors');
 var selecttransaction = require('./routes/selecttransaction');
-
+var cassandra = require('cassandra-driver');
+var client = new cassandra.Client({contactPoints: ['127.0.0.1'] }); //connect cassandra
 ////////////////////////Using Express framework///////////////////////////
 var app = express();
 
@@ -42,6 +43,37 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Start My Web
+app.get('/api', function (req, res , next) {
+        console.log("Getting GET request");
+        var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+        var data = req.originalUrl;
+        var string = data.substr(8,data.length);
+           string += '&';
+        var DataObject = new Array();
+        var k=0;
+        for (var i = 0 , len = string.length; i < len; i++) {
+           // console.log("string["+i+"] is "+string[i]);
+           if(string[i] == '='){
+
+               var j=i+1;
+               var data = '';
+               while (string[j] != '&') {
+
+                 data += string[j];
+                 j++;
+
+                 if (j == string.length) {
+                   return;
+                 }
+               }
+                 console.log("data is "+data);
+                 DataObject[k]=data;
+                 console.log("DataObject[k] is "+DataObject[k]);
+                 k++;
+           }
+        }
+
+});
 app.use('/',routes);
 app.use('/login',routes);
 
@@ -53,24 +85,12 @@ app.get('/transactions',selecttransaction);
 app.use('/manageinfo',routes);
 app.get('/showdetail',showdetail);
 
-/* app.use('/register',function(res,req,next){
-	app.use('/register',insertlocation);
-	next()
-	app.use('/register',insertsensor);
-	next()
-	res.render('/');
-
-	});
-  */
 
 ////////////////////// sensor /////////////////
 
 app.use(cors())
 
-app.post('/api/temp', function (req, res) {
-  console.log(req.query.temp)
-  res.send('success : ' + req.query.temp)
-})
+
 
 //////////////// end sensor /////////////////
 
