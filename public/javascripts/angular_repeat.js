@@ -5,84 +5,8 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope
     $scope.items = response;
   });
 
-  $scope.open = function (size , check) {
-    // console.log("check is "+check);
-    var modalInstance = $uibModal.open({
-      templateUrl: 'myModalContent.html',
-      controller: 'ModalInstanceCtrl',
-      size: size,
-      resolve: {
-        items: function () {
-          // $http.get("http://localhost:3000/manageinfo/getdata").then(function (response) {
-            // console.log("response is "+response);
-            for (var i = 0; i < $scope.items.data.length; i++) {
-              // body
-            		if(check == $scope.items.data[i].s_id){
-                  console.log("$scope.items.data[i].s_name is "+$scope.items.data[i].s_name);
-                  return $scope.items.data[i];
-            		}
-            }
-          // });
-
-        }
-      }
-    });
-  };
-
-  $scope.open_details = function (size , check) {
-    console.log("check is "+check);
-    var modalInstance = $uibModal.open({
-      templateUrl: 'myModalContent_detail.html',
-      controller: 'ModalInstanceCtrl',
-      size: size,
-      resolve: {
-        items: function () {
-          $http.get("http://localhost:3000/manageinfo/details/"+check).then(function (response) {
-
-            // console.log("response is "+response);
-
-            // for (var i = 0; i < $scope.items.data.length; i++) {
-            //   // body
-            // 		if(check == $scope.items.data[i].s_id){
-            //       return $scope.items.data[i];
-            // 		}
-            // }
-            // $scope.items = response;
-
-
-            // console.log("response.data[0] is "+response.data[0].s_name);
-            // console.log("response.data[1] is "+response.data[1].s_name);
-            $scope.details = response.data[0];
-            console.log("$scope.details is "+$scope.details.s_name);
-            return response.data[0];
-          });
-        }
-      }
-    });
-  };
-
-  $scope.open_delete = function (size , check) {
-      console.log("check is "+check);
-      var modalInstance = $uibModal.open({
-        templateUrl: 'myModal.html',
-        controller: 'ModalInstanceCtrl',
-        size: size,
-        resolve: {
-          items: function () {
-              return check;
-          }
-        }
-      });
-  };
-
-
-});
-
-
-angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope, $uibModal, $log , $http) {
-
-  $http.get("http://localhost:3000/manageinfo/getdata").then(function (response) {
-    $scope.items = response;
+  $http.get("http://localhost:3000/manageinfo/getdetails").then(function (response) {
+    $scope.details = response;
   });
 
   $scope.open = function (size , check) {
@@ -98,7 +22,7 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope
             for (var i = 0; i < $scope.items.data.length; i++) {
               // body
             		if(check == $scope.items.data[i].s_id){
-                  console.log("$scope.items.data[i].s_name is "+$scope.items.data[i].s_name);
+                  // console.log("$scope.items.data[i].s_name is "+$scope.items.data[i].s_name);
                   return $scope.items.data[i];
             		}
             }
@@ -110,17 +34,15 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope
   };
 
   $scope.open_details = function (size , check) {
-    console.log("check is "+check);
+    // console.log("check is "+check);
     var modalInstance = $uibModal.open({
       templateUrl: 'myModalContent_detail.html',
       controller: 'ModalInstanceCtrl',
       size: size,
       resolve: {
         items: function () {
-          $http.get("http://localhost:3000/manageinfo/details/"+check).then(function (response) {
-
+          // $http.get("http://localhost:3000/manageinfo/details/"+check).then(function (response) {
             // console.log("response is "+response);
-
             // for (var i = 0; i < $scope.items.data.length; i++) {
             //   // body
             // 		if(check == $scope.items.data[i].s_id){
@@ -128,21 +50,32 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope
             // 		}
             // }
             // $scope.items = response;
-
-
             // console.log("response.data[0] is "+response.data[0].s_name);
             // console.log("response.data[1] is "+response.data[1].s_name);
-            $scope.details = response.data[0];
-            console.log("$scope.details is "+$scope.details.s_name);
-            return response.data[0];
-          });
+
+
+            for (var i = 0; i < $scope.details.data.length; i++) {
+              // body
+                if(check == $scope.details.data[i].s_id){
+                  // console.log("$scope.items.data[i].s_name is "+$scope.items.data[i].s_name);
+                  return $scope.details.data[i];
+                }
+            }
+
+            ///////////////////////IMPORTANT !! ///////////////////////
+            // $scope.details = response.data[0];
+            // console.log("$scope.details is "+$scope.details.s_name);
+            // console.log("response.data[0] is "+response.data[0]);
+            // console.log("TEST!!");
+            ///////////////////////IMPORTANT !! ///////////////////////
+          // });
         }
       }
     });
   };
 
   $scope.open_delete = function (size , check) {
-      console.log("check is "+check);
+      // console.log("check is "+check);
       var modalInstance = $uibModal.open({
         templateUrl: 'myModal.html',
         controller: 'ModalInstanceCtrl',
@@ -168,6 +101,11 @@ angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($s
   $scope.ok = function () {
     $http.put("http://localhost:3000/manageinfo/update/"+$scope.items.s_id , $scope.items);
     alert('Update your account');
+  };
+
+  $scope.ok_details = function () {
+    console.log(obj);
+    $http.put("http://localhost:3000/manageinfo/details/update/"+$scope.details.s_id , $scope.details);
   };
 
   $scope.cancel = function () {

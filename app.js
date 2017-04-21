@@ -52,7 +52,6 @@ app.get('/api', function (req, res , next) {
         var DataObject = new Array();
         var k=0;
         for (var i = 0 , len = string.length; i < len; i++) {
-           // console.log("string["+i+"] is "+string[i]);
            if(string[i] == '='){
 
                var j=i+1;
@@ -74,6 +73,8 @@ app.get('/api', function (req, res , next) {
         }
 
 });
+
+
 app.use('/',routes);
 app.use('/login',routes);
 

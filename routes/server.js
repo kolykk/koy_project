@@ -34,7 +34,7 @@ router.get('/api',function(req,res){
           console.log("error is "+error);
         }else {
           // console.log("test");
-          console.log("result.rows is "+result.rows[0].control_humid);
+          console.log("result.rows[0].control_humid is "+result.rows[0].control_humid);
           res.jsonp(result.rows);
           }
       });
@@ -42,6 +42,20 @@ router.get('/api',function(req,res){
 
   router.get('/getdata',function(req,res){
     var query = "select * from registration.sensor;";
+    // const params = {d_id : id , control_humid : humid , control_temp : temp , finish_time : req.body.finish_time , s_name : req.body.s_name , start_time : req.body.start_time};
+    client.execute( query ,{ prepare: true } , function(error, result) {
+        if(error){
+          console.log("error is "+err1);
+        }else {
+          // console.log("test");
+          // console.log("result.rows is "+result.rows);
+          res.jsonp(result.rows);
+          }
+      });
+  });
+
+  router.get('/getdetails',function(req,res){
+    var query = "select * from registration.detail;";
     // const params = {d_id : id , control_humid : humid , control_temp : temp , finish_time : req.body.finish_time , s_name : req.body.s_name , start_time : req.body.start_time};
     client.execute( query ,{ prepare: true } , function(error, result) {
         if(error){
@@ -87,6 +101,22 @@ router.get('/api',function(req,res){
         });
   });
 
+
+  router.put('/details/update/:s_id',function(req,res){
+    console.log("req.s_id is "+req.s_id);
+    console.log("req.body is "+req.body.s_name);
+    var query = "UPDATE registration.detail SET s_descriptions = ? , s_established = ? , s_location = ? , s_name = ? WHERE s_id = "+req.s_id+";";
+    const params = [ req.body.s_descriptions , req.body.s_established , req.body.s_location , req.body.s_name ];
+      client.execute( query , params , { prepare: true } , function(error, result) {
+            if(error){
+              console.log("ERROR is "+error);
+            }else {
+              // console.log("test2");
+              console.log('SUCCESS !!');
+              // res.redirect('/manageinfo');
+            }
+        });
+  });
 
   router.put('/update/:s_id',function(req,res){
     console.log("req.s_id is "+req.s_id);
